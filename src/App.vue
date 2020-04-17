@@ -6,11 +6,13 @@
 </template>
 
 <script>
+
 export default {
   
 };
 </script>
 
 <style lang='less'>
-
+// 导入 base.css
+@import url(~@/style/base.css);
 </style>
