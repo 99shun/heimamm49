@@ -74,20 +74,37 @@
         <!-- 登陆注册按钮 -->
         <el-form-item>
           <!-- 决定el-button里面颜色的值为type="值" -->
-          <el-button class="login-form-button" type="primary" @click="open1">登陆</el-button>
+          <el-button class="login-form-button" type="primary" @click="loginClick">登陆</el-button>
           <br />
-          <el-button class="login-form-button" type="primary" @click="open2">注册</el-button>
+          <el-button class="login-form-button" type="primary" @click="registerClick">注册</el-button>
         </el-form-item>
       </el-form>
     </div>
     <div class="right">
       <img src="@/assets/img/login_banner_ele.png" alt />
     </div>
+
+    <!--
+       组件套用其他组件
+       1. 导入组件  import 名字 from 路径
+       2. 注册  componenets: { 名字 }
+       3. 当标签使用
+     -->
+
+
+    <!-- 注册弹出框 -->
+     <register ref="register"></register>
   </div>
 </template>
 
 <script>
+// 导入 注册 弹出框
+import register from './register.vue'
+
 export default {
+  components: {
+    register
+  },
   data() {
     return {
       form: {
@@ -114,7 +131,8 @@ export default {
     };
   },
   methods: {
-    open1() {
+    // 登录点击
+    loginClick() { 
       // 这是官网写的方法 比较麻烦
       // // this.$message({
       // //   message: '恭喜你，这是一条成功的消息',
@@ -131,11 +149,11 @@ export default {
         this.$message.success(result + '');
       });
     },
-    open2() {
-      this.$refs.form.validate(result => {
-          // result + ""  让输出的内容变成了字符串
-        this.$message.success(result + '');
-      });
+    // 注册点击
+    registerClick() {
+      // 先在 标签组件上 定义ref的值
+      // 在通过 this.$refs.值.dialogFormVisible = true 来显示弹窗
+     this.$refs.register.dialogFormVisible = true;
     }
   }
 };
