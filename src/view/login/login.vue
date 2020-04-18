@@ -153,7 +153,9 @@ export default {
     registerClick() {
       // 先在 标签组件上 定义ref的值
       // 在通过 this.$refs.值.dialogFormVisible = true 来显示弹窗
-     this.$refs.register.dialogFormVisible = true;
+      alert(process.env.VUE_APP_URL);
+      this.$refs.register.dialogFormVisible = true;
+
     }
   }
 };
